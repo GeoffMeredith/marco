@@ -1,4 +1,4 @@
-// mario.js
+// marco.js
 
 // module aliases
 var Engine = Matter.Engine,
@@ -12,7 +12,7 @@ var engine = Engine.create();
 
 // create a renderer
 var render = Render.create({
-    element: document.getElementById("mario"),
+    element: document.getElementById("marco"),
     engine: engine,
     options: {
 	    height: 600
@@ -25,16 +25,15 @@ const staticElements = [
 	[750, 580, 100, 50],
 ];
 
-const mario = Bodies.rectangle(100, 400, 50, 100, { friction: 0.1, label: 'mario' });
+const marco = Bodies.rectangle(100, 400, 50, 100, { friction: 0.1, label: 'marco' });
 
-var bodies = [mario];
+var bodies = [marco];
 staticElements.forEach(element => {
 	const body = Bodies.rectangle(element[0], element[1], element[2], element[3], { isStatic: true });
 	bodies.push(body);
 });
 
 // add all of the bodies to the world
-World.add(engine.world, bodies);
 
 // run the engine
 Engine.run(engine);
@@ -43,20 +42,20 @@ Engine.run(engine);
 Render.run(render);
 
 function resetGame() {
-	Body.set(mario, 'position', { x: 100, y: 400 });
+	Body.set(marco, 'position', { x: 100, y: 400 });
 
 }
 
 function keyboardHandler(e) {
-	const pMario = mario.position;
+	const pMario = marco.position;
 	const pMarioBottom = { x: pMario.x, y: pMario.y + 50 };
 	var xTranslate = 0;
-	console.log('mario position', pMario);
+	console.log('marco position', pMario);
 	switch (e.keyCode) {
 		case 32: // space key
 		case 38: // up arrow key
-			console.log('space bar and up arrow key', mario);
-			Body.applyForce(mario, pMario, { x: 0, y: -0.1 });
+			console.log('space bar and up arrow key', marco);
+			Body.applyForce(marco, pMario, { x: 0, y: -0.1 });
 			break;
 
 		case 65: // a key
@@ -74,7 +73,7 @@ function keyboardHandler(e) {
 		case 39: // right arrow key
 			console.log('d or right arrow key');
 			xTranslate = 10;
-			// Body.applyForce(mario, pMario, { x: 0.1, y: 0 });
+			// Body.applyForce(marco, pMario, { x: 0.1, y: 0 });
 			break
 
 		case 82:
@@ -83,10 +82,10 @@ function keyboardHandler(e) {
 
 		default: console.log('key', e.keyCode);
 	}
-	// Render.lookAt(render, mario, { x: 100, y: 100 });
+	// Render.lookAt(render, marco, { x: 100, y: 100 });
 	console.log(render.bounds);
 	if (xTranslate != 0) {
-		Body.set(mario, 'position', { x: pMario.x + xTranslate, y: pMario.y });	
+		Body.set(marco, 'position', { x: pMario.x + xTranslate, y: pMario.y });	
 		render.bounds.max.x += xTranslate;
 		render.bounds.min.x += xTranslate;
 		// Render.startViewTransform(render);

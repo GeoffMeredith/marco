@@ -99,7 +99,7 @@ function gameLoop() {
 	if (marco.position.y < 0)
 		Body.setPosition(marco, { x: marco.position.x, y: 0 });
 
-	console.log(marco.position.x, render.bounds.min.x);
+	// console.log(marco.position.x, render.bounds.min.x);
 	if (marco.position.x > render.bounds.max.x - viewportWidth / 3)
 		moveViewport(marco.position.x - (render.bounds.max.x - viewportWidth / 3));
 	if (marco.position.x < render.bounds.min.x + viewportWidth / 3)
